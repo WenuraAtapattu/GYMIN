@@ -20,6 +20,16 @@
             </div>
 
             <div class="mt-4">
+                <x-label for="phone" value="{{ __('Phone Number') }}" />
+                <x-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required autocomplete="tel" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="address" value="{{ __('Address') }}" />
+                <textarea id="address" name="address" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" rows="3" required>{{ old('address') }}</textarea>
+            </div>
+
+            <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
@@ -46,19 +56,22 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
-                <div class="space-y-2">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 block" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 block" href="{{ route('login') }}?admin=1">
-                        {{ __('Admin Login') }}
-                    </a>
+            <div class="mt-6">
+                <div class="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+                    <div class="space-y-2 w-full sm:w-auto">
+                        <a class="block w-full text-center sm:text-left text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200" 
+                           href="{{ route('login') }}">
+                            {{ __('Already registered? Sign in') }}
+                        </a>
+                        <a class="block w-full text-center sm:text-left text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors duration-200" 
+                           href="{{ route('login') }}?admin=1">
+                            {{ __('Admin Login') }}
+                        </a>
+                    </div>
+                    <x-button class="w-full sm:w-auto px-6 py-2">
+                        {{ __('Register') }}
+                    </x-button>
                 </div>
-
-                <x-button class="ms-4">
-                    {{ __('Register') }}
-                </x-button>
             </div>
         </form>
     </x-authentication-card>

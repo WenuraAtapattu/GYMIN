@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'email_verified_at',
         'phone',
+        'address',
         'date_of_birth',
         'gender',
         'fitness_goals',
