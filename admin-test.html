@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymIn Admin Dashboard Test</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        .btn-primary { background: #3b82f6; color: white; border: none; }
+        .btn-success { background: #10b981; color: white; border: none; }
+        .btn-danger { background: #ef4444; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>GymIn Admin Dashboard Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Admin Access</h2>
+        <p>Admin User Credentials:</p>
+        <ul>
+            <li><strong>Email:</strong> admin@gymin.com</li>
+            <li><strong>Password:</strong> password123</li>
+        </ul>
+        <button class="btn-primary" onclick="window.open('http://127.0.0.1:8000/login', '_blank')">Open Login Page</button>
+        <button class="btn-success" onclick="window.open('http://127.0.0.1:8000/admin/dashboard', '_blank')">Open Admin Dashboard</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Features to Test in Admin Dashboard</h2>
+        <div x-data="{ tests: [
+            { name: 'Real-time Stats Updates', status: 'pending', description: 'Check if stats refresh every 5 seconds automatically' },
+            { name: 'Package CRUD Operations', status: 'pending', description: 'Create, edit, delete packages with real-time notifications' },
+            { name: 'User Management', status: 'pending', description: 'Create, edit, delete users with form validation' },
+            { name: 'Order Management', status: 'pending', description: 'Update order status and delete orders' },
+            { name: 'Real-time Notifications', status: 'pending', description: 'Toast notifications appear for all operations' },
+            { name: 'Form Validation', status: 'pending', description: 'All forms validate input properly' },
+            { name: 'Modal Interactions', status: 'pending', description: 'Modals open/close smoothly with Alpine.js' },
+            { name: 'Auto-refresh', status: 'pending', description: 'Stats refresh automatically every 30 seconds' }
+        ] }">
+            <div x-show="tests.length > 0">
+                <template x-for="(test, index) in tests" :key="index">
+                    <div style="margin: 10px 0; padding: 10px; border-left: 4px solid #3b82f6;">
+                        <strong x-text="test.name"></strong>
+                        <span :class="{ 'success': test.status === 'passed', 'error': test.status === 'failed' }" 
+                              x-text="'(' + test.status + ')'"></span>
+                        <p x-text="test.description" style="margin: 5px 0; color: #666;"></p>
+                        <button class="btn-success" @click="test.status = 'passed'">Mark as Passed</button>
+                        <button class="btn-danger" @click="test.status = 'failed'">Mark as Failed</button>
+                        <button class="btn-primary" @click="test.status = 'pending'">Reset</button>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Expected Real-time Features</h2>
+        <ul>
+            <li>✅ Auto-refresh stats every 5 seconds with wire:poll</li>
+            <li>✅ Immediate notifications for all CRUD operations</li>
+            <li>✅ Real-time event dispatching with Livewire events</li>
+            <li>✅ Smooth animations for notifications</li>
+            <li>✅ Form validation with instant feedback</li>
+            <li>✅ Modal interactions with Alpine.js</li>
+            <li>✅ Database transactions for data integrity</li>
+            <li>✅ Error handling and user feedback</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>Technical Implementation</h2>
+        <ul>
+            <li><strong>Livewire 3:</strong> Real-time component updates</li>
+            <li><strong>Alpine.js:</strong> Frontend interactivity</li>
+            <li><strong>Tailwind CSS:</strong> Modern styling</li>
+            <li><strong>Laravel 12:</strong> Backend framework</li>
+            <li><strong>MySQL:</strong> Primary database</li>
+            <li><strong>Real-time Events:</strong> wire:poll + dispatch events</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>Quick Test Instructions</h2>
+        <ol>
+            <li>Login with admin credentials</li>
+            <li>Observe stats updating every 5 seconds</li>
+            <li>Create a new package - check for instant notification</li>
+            <li>Edit/delete packages - verify real-time updates</li>
+            <li>Test user management features</li>
+            <li>Update order statuses</li>
+            <li>Check console for event logs</li>
+        </ol>
+    </div>
+</body>
+</html>
